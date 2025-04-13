@@ -1,9 +1,8 @@
 package descubraPalavra;
 
 import global.ControlJogo;
-import global.GerenciamentoDeDicas;
 import global.Main;
-import global.Palavras;
+
 
 public class JogoDaDescoberta {
     public void jogandoDescobraPalavra(){
