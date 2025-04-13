@@ -3,7 +3,7 @@ package global;
 public class Palavras {
     String opcoesPavras[] = {"formol","acervo","vender","vaso","ator","bobo","livro","carta","garfo","dor","sal"};
     public String palavra = "";
-
+    public int[][] posisao;
 
 
     public void escolherPalavra(){
