@@ -1,8 +1,7 @@
 package descubraPalavra;
 
-import global.ControlJogo;
 import global.Main;
-import global.Palavras;
+
 
 public class PalavrasEmbaralhadas {
     static String[] palavraEmbaralhadas = new String[Main.controlJogo.quatidadeDePalavras];
