@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Main {
     public static Scanner sc = new Scanner(System.in);
-    public static ControlJogo controlJogo = new ControlJogo();
+    public static ControlJogo controlJogo = new ControlJogo(2);
     public static Random random = new Random();
     public static Palavras[] palavras = new Palavras[controlJogo.quatidadeDePalavras];
     public static GerenciamentoDeDicas dicas = new GerenciamentoDeDicas();
