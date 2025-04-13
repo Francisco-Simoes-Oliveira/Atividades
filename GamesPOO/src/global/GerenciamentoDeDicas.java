@@ -14,14 +14,23 @@ public class GerenciamentoDeDicas {
     }
 
     public void revelacaoPalavra() {
-        //if (quantidadeDicas == (palavraRevelada[indexPalavrasReveladas].length() - 1) && indexPalavrasReveladas<ControlJogo.quatidadeDePalavras){
-        //    indexPalavrasReveladas+= 1;
-        //}
+        if (quantidadeDicas == (palavraRevelada[indexPalavrasReveladas].length() - 1)
+                && indexPalavrasReveladas<Main.controlJogo.quatidadeDePalavras && indexPalavrasReveladas != 0){
+            indexPalavrasReveladas+= 1;
+        }
+        while (indexPalavrasReveladas < Main.controlJogo.quatidadeDePalavras &&
+                Main.controlJogo.palavrasAcertada[indexPalavrasReveladas]) {
+            palavraRevelada[indexPalavrasReveladas] = Main.palavras[indexPalavrasReveladas].palavra;
+            indexPalavrasReveladas++;
+        }
+        if (indexPalavrasReveladas >= Main.controlJogo.quatidadeDePalavras) {
+            return;
+        }
 
         String palavraEscolhida = Main.palavras[indexPalavrasReveladas].palavra;
         char[] palavraEscolhidaArray = palavraEscolhida.toCharArray();
         char[] palavraReveladaArray = new char[palavraEscolhida.length()];
-        if (!palavraRevelada[0].equals("_")) {
+        if (!palavraRevelada[indexPalavrasReveladas].equals("_")) {
             palavraReveladaArray = palavraRevelada[indexPalavrasReveladas].toCharArray();
         } else {
             for (int y = 0;y < palavraEscolhida.length(); y++) {
