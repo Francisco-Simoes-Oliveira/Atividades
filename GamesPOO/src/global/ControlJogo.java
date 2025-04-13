@@ -12,7 +12,7 @@ public class ControlJogo{
         System.out.println("Bagulho inicio");
         quatidadeDePalavras = 1;
         quantidadeDeAcertos =0;
-        tentativas = 0;
+        tentativas = 1;
         acerto = false;
         pontos = 0;
         palavrasAcertada = new boolean[1];
@@ -20,7 +20,7 @@ public class ControlJogo{
     public ControlJogo(Integer quatidadeDePalavras){
         this.quatidadeDePalavras = quatidadeDePalavras;
         quantidadeDeAcertos =0;
-        tentativas = 0;
+        tentativas = 1;
         acerto = false;
         pontos = 0;
         palavrasAcertada = new boolean[quatidadeDePalavras];
@@ -59,10 +59,11 @@ public class ControlJogo{
                         }
                     }
                 }
-                if (!acertouAlguma) {
-                    tentativas++;
-                    System.out.println("Palavra errada! Tente novamente.");
-                }
+
+            }
+            if (!acertouAlguma) {
+                tentativas++;
+                System.out.println("Palavra errada! Tente novamente.");
             }
         }
         return 0;
