@@ -17,6 +17,7 @@ public class JogoCacaPalavra {
         tabelaLocal.esconderPalavra();
         tabelaLocal.mostrarTabela();
 
+
         while (!Main.controlJogo.acerto){
             String entrada = ControlJogo.mostrarOpcoes();
 
