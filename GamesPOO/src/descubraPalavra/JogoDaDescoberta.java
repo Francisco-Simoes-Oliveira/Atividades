@@ -6,18 +6,25 @@ import global.Main;
 
 public class JogoDaDescoberta {
     public void jogandoDescobraPalavra(){
-        PalavrasEmbaralhadas palavrasEmbaralhadasLocal = new PalavrasEmbaralhadas();
+        boolean sairDoJogo = false;
 
-        Main.palavras[0].escolherPalavra();
-        palavrasEmbaralhadasLocal.embaralhar();
+        while (!sairDoJogo) {
+            PalavrasEmbaralhadas palavrasEmbaralhadasLocal = new PalavrasEmbaralhadas();
 
-        palavrasEmbaralhadasLocal.mostrarPalavraEmbaralhada();
-        while(!Main.controlJogo.acerto){
-            String entrada = ControlJogo.mostrarOpcoes();
+            Main.palavras[0].escolherPalavra();
+            palavrasEmbaralhadasLocal.embaralhar();
 
-            if ( Main.controlJogo.verificacaoReposta(entrada) == 1){
-                break;
+            palavrasEmbaralhadasLocal.mostrarPalavraEmbaralhada();
+            while (!Main.controlJogo.acerto) {
+                String entrada = ControlJogo.mostrarOpcoes();
+
+                if (Main.controlJogo.verificacaoReposta(entrada) == 1) {
+                    break;
+                }
             }
+            System.out.println("Deseja continuar jogando Descubra a palavra (Se sim digite [1] se quer parar [0])");
+            int resp = Main.sc.nextInt();
+            if (resp == 0) sairDoJogo = true;
         }
     }
 }
