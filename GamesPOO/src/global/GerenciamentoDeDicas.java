@@ -3,8 +3,8 @@ package global;
 public class GerenciamentoDeDicas {
     public Integer quantidadeDicas = 0;
     public String[] palavraRevelada ;
-    static Integer indexPalavrasReveladas = 0;
-
+    public Integer indexPalavrasReveladas = 0;
+    public Integer indexCaracter = 0;
 
     public GerenciamentoDeDicas(){
         palavraRevelada = new String[Main.controlJogo.quatidadeDePalavras];
@@ -14,7 +14,7 @@ public class GerenciamentoDeDicas {
     }
 
     public void revelacaoPalavra() {
-        if (quantidadeDicas == (palavraRevelada[indexPalavrasReveladas].length() - 1)
+        if (indexCaracter == (Main.palavras[indexPalavrasReveladas].palavra.length() - 1)
                 && indexPalavrasReveladas<Main.controlJogo.quatidadeDePalavras && indexPalavrasReveladas != 0){
             indexPalavrasReveladas+= 1;
         }
@@ -22,6 +22,7 @@ public class GerenciamentoDeDicas {
                 Main.controlJogo.palavrasAcertada[indexPalavrasReveladas]) {
             palavraRevelada[indexPalavrasReveladas] = Main.palavras[indexPalavrasReveladas].palavra;
             indexPalavrasReveladas++;
+            indexCaracter = 0;
         }
         if (indexPalavrasReveladas >= Main.controlJogo.quatidadeDePalavras) {
             return;
@@ -38,11 +39,17 @@ public class GerenciamentoDeDicas {
             }
         }
 
-        if (quantidadeDicas == 0 || quantidadeDicas == palavraEscolhida.length()) {
+
+        System.out.println(quantidadeDicas);
+        if (quantidadeDicas == 0 || indexCaracter == 0) {
             palavraReveladaArray[0] = palavraEscolhidaArray[0];
             palavraReveladaArray[palavraReveladaArray.length - 1] = palavraEscolhidaArray[palavraEscolhida.length() - 1];
+            indexCaracter +=1;
         } else {
-            palavraReveladaArray[quantidadeDicas] = palavraEscolhidaArray[quantidadeDicas];
+            if (indexCaracter < palavraEscolhidaArray.length - 1) {
+                palavraReveladaArray[indexCaracter] = palavraEscolhidaArray[indexCaracter];
+                indexCaracter += 1;
+            }
         }
         palavraRevelada[indexPalavrasReveladas] = new String(palavraReveladaArray);
     }
