@@ -40,7 +40,7 @@ public class GerenciamentoDeDicas {
         }
 
 
-        System.out.println(quantidadeDicas);
+
         if (quantidadeDicas == 0 || indexCaracter == 0) {
             palavraReveladaArray[0] = palavraEscolhidaArray[0];
             palavraReveladaArray[palavraReveladaArray.length - 1] = palavraEscolhidaArray[palavraEscolhida.length() - 1];
