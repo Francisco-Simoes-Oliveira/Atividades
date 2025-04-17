@@ -3,9 +3,14 @@ package cacapalavra;
 import global.Main;
 
 public class Tabela {
-    Integer tamanhoTabela  = 10 ;
-    char tabela[][] = new char[tamanhoTabela][tamanhoTabela];
+    Integer tamanhoTabela;
+    char[][] tabela ;
 
+
+    public Tabela(){
+        tamanhoTabela = 10;
+        tabela = new char[tamanhoTabela][tamanhoTabela];
+    }
 
     public void precherTabela() {
 
@@ -36,8 +41,8 @@ public class Tabela {
             boolean valido = false;
             while (!valido){
                 if (tipoDeOcutacao == 0) { //Tipo horizontal
-                    linha = Main.random.nextInt(10);
-                    coluna = Main.random.nextInt(10 - palavraEscolhida.length());
+                    linha = Main.random.nextInt(tamanhoTabela);
+                    coluna = Main.random.nextInt(tamanhoTabela - palavraEscolhida.length());
                     for (int y = 0; y < palavraEscolhida.length(); y++) {
                         Main.palavras[x].posisao[y][0] = linha;
                         Main.palavras[x].posisao[y][1] = coluna;
@@ -49,8 +54,8 @@ public class Tabela {
                     }
                 }
                 if (tipoDeOcutacao == 1) { //Tipo Vertical
-                    linha = Main.random.nextInt(10 - palavraEscolhida.length());
-                    coluna = Main.random.nextInt(10);
+                    linha = Main.random.nextInt(tamanhoTabela - palavraEscolhida.length());
+                    coluna = Main.random.nextInt(tamanhoTabela);
                     for (int y = 0; y < palavraEscolhida.length(); y++) {
                         Main.palavras[x].posisao[y][0] = linha;
                         Main.palavras[x].posisao[y][1] = coluna;
@@ -62,8 +67,8 @@ public class Tabela {
                     }
                 }
                 if (tipoDeOcutacao == 2) {// Tipo diagonal
-                    linha = Main.random.nextInt(10 - palavraEscolhida.length());
-                    coluna = Main.random.nextInt(10 - palavraEscolhida.length());
+                    linha = Main.random.nextInt(tamanhoTabela - palavraEscolhida.length());
+                    coluna = Main.random.nextInt(tamanhoTabela - palavraEscolhida.length());
                     for (int y = 0; y < palavraEscolhida.length(); y++) {
                         Main.palavras[x].posisao[y][0] = linha;
                         Main.palavras[x].posisao[y][1] = coluna;
@@ -82,19 +87,17 @@ public class Tabela {
     }
 
     public boolean validarPosicao(int indiceAtual){
-        for (int i = 0; i < indiceAtual; i++) {
-            for (int x = 0; x < Main.palavras[indiceAtual].posisao.length; x++) { 
-                for (int y = 0; y < Main.palavras[i].posisao.length; y++) { 
-                    if (Main.palavras[indiceAtual].posisao[x][0] == Main.palavras[i].posisao[y][0] &&
-                            Main.palavras[indiceAtual].posisao[x][1] == Main.palavras[i].posisao[y][1]) {
-                        return false; 
+        for (int i = 0; i < indiceAtual; i++) { // para verificar todas as palavras passadas
+            for (int x = 0; x < Main.palavras[indiceAtual].posisao.length; x++) { // percorres todas as cordenadas da palavra a ser escondida
+                for (int y = 0; y < Main.palavras[i].posisao.length; y++) { // palavras anteriores que serão comparadas
+                    if (Main.palavras[indiceAtual].posisao[x][0] == Main.palavras[i].posisao[y][0] && Main.palavras[indiceAtual].posisao[x][1] == Main.palavras[i].posisao[y][1]) {
+                        return false; // se uma cordenada de uma letra bater com uma ja escondida ele volta falso e sorteia uma escondida diferente
                     }
                 }
             }
         }
-        return true; 
+        return true;
     }
 
 }
-
 
