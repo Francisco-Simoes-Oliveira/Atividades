@@ -25,6 +25,14 @@ public class ControlJogo{
         pontos = 0;
         palavrasAcertada = new boolean[quatidadeDePalavras];
     }
+    public ControlJogo(Integer quatidadeDePalavras, Integer pontos){
+        this.quatidadeDePalavras = quatidadeDePalavras;
+        quantidadeDeAcertos =0;
+        tentativas = 1;
+        acerto = false;
+        this.pontos = pontos;
+        palavrasAcertada = new boolean[quatidadeDePalavras];
+    }
 
     public static String mostrarOpcoes(){
         System.out.println("\nInforme a palavra, 'dica' para receber uma dica ou '0' para desistir!");
@@ -52,7 +60,7 @@ public class ControlJogo{
                         System.out.println("palavra "+ (x+1) +"° certa");
 
                         if (quantidadeDeAcertos == quatidadeDePalavras) {
-                            pontos = quatidadeDePalavras * (100 - ((tentativas - 1) * 6)) - (Main.dicas.quantidadeDicas * 10);
+                            pontos = pontos + (quatidadeDePalavras * (100 - ((tentativas - 1) * 6)) - (Main.dicas.quantidadeDicas * 10));
                             System.out.println("Parabens vc acertou com " + tentativas + " tentativas e " + Main.dicas.quantidadeDicas + " dicas usadas.");
                             System.out.println("Resultando em " + pontos + " pontos.");
                             acerto = true;
