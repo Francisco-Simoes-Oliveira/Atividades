@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Main {
     public static Scanner sc = new Scanner(System.in);
-    public static ControlJogo controlJogo = new ControlJogo(2);
+    public static ControlJogo controlJogo = new ControlJogo(1);
     public static Random random = new Random();
     public static Palavras[] palavras = new Palavras[controlJogo.quatidadeDePalavras];
     public static GerenciamentoDeDicas dicas = new GerenciamentoDeDicas();
@@ -32,6 +32,12 @@ public class Main {
         } else {
             System.out.println("Numero escolhido invalido");
         }
+
+    }
+    public static void reset(){
+        sc.nextLine();
+        controlJogo = new ControlJogo(controlJogo.quatidadeDePalavras, controlJogo.pontos);
+        dicas = new GerenciamentoDeDicas();
 
     }
 }
