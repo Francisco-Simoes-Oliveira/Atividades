@@ -22,9 +22,10 @@ public class JogoDaDescoberta {
                     break;
                 }
             }
-            System.out.println("Deseja continuar jogando Descubra a palavra (Se sim digite [1] se quer parar [0])");
+            System.out.println("\nDeseja continuar jogando Descubra a palavra (Se sim digite [1] se quer parar [0])");
             int resp = Main.sc.nextInt();
             if (resp == 0) sairDoJogo = true;
+            else Main.reset();
         }
     }
 }
