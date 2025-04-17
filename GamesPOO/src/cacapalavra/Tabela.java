@@ -13,7 +13,6 @@ public class Tabela {
     }
 
     public void precherTabela() {
-
         for(int x=0; x<tamanhoTabela;x++){
             for (int y=0; y<tamanhoTabela; y++){
                 tabela[x][y] = (char)('A' + Main.random.nextInt(25));
@@ -22,12 +21,38 @@ public class Tabela {
     }
 
     public void mostrarTabela() {
+
         for(int x=0; x<tamanhoTabela;x++){
             for (int y=0; y<tamanhoTabela; y++){
-                System.out.print(tabela[x][y]+"|");
+                if (Main.controlJogo.quantidadeDeAcertos>0){
+                    if (colorirTabela(x,y)){
+                        System.out.print(tabela[x][y]+"|");
+                    }
+                } else {
+                    System.out.print(tabela[x][y]+"|");
+                }
+
             }
             System.out.println(" ");
         }
+    }
+
+    public boolean colorirTabela(int linha, int coluna){
+        String cor = "\033[0;32m";
+        String reset = "\033[0m";
+        for (int x=0; x<Main.controlJogo.quatidadeDePalavras;x++){ //passar pelas palavras
+            if (Main.controlJogo.palavrasAcertada[x]){
+                for (int y=0; y<Main.palavras[x].palavra.length() ;y++){// verificar posição
+                    int linhaPalavra = Main.palavras[x].posisao[y][0];
+                    int colunaPalavra = Main.palavras[x].posisao[y][1];
+                    if (linhaPalavra == linha && colunaPalavra == coluna){
+                        System.out.print(cor+tabela[linha][coluna]+reset+"|");
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
     }
 
     public void esconderPalavra(){
