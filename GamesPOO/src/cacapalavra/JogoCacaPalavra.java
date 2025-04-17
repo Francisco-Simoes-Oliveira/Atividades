@@ -19,6 +19,7 @@ public class JogoCacaPalavra {
 
 
             while (!Main.controlJogo.acerto) {
+                Main.sc.nextLine();
                 String entrada = ControlJogo.mostrarOpcoes();
 
                 if (Main.controlJogo.verificacaoReposta(entrada) == 1) {
@@ -28,11 +29,10 @@ public class JogoCacaPalavra {
             }
 
 
-            System.out.println("Deseja continuar jogando caça palavra(Se sim digite [1] se quer parar [0])");
+            System.out.println("\nDeseja continuar jogando Descubra a palavra (Se sim digite [1] se quer parar [0])");
             int resp = Main.sc.nextInt();
-            if (resp == 0) sairDoJogo = true ;
-
-
+            if (resp == 0) sairDoJogo = true;
+            else Main.reset();
 
         }
     }
