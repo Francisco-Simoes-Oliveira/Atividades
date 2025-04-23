@@ -7,13 +7,8 @@ import global.Main;
 
 public class JogoTermo {
 
-
-
     public void jogandoTermo() {
         boolean sairDoJogo = false;
-
-
-
 
         while (!sairDoJogo) {
             Main.palavras[0].escolherPalavra();

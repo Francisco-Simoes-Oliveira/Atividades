@@ -3,7 +3,6 @@ package global;
 
 import Termo.JogoTermo;
 import cacapalavra.JogoCacaPalavra;
-import cacapalavra.Tabela;
 import descubraPalavra.JogoDaDescoberta;
 import java.util.Random;
 import java.util.Scanner;
@@ -24,17 +23,14 @@ public class Main {
         int qualJogo = sc.nextInt();
         sc.nextLine();
 
-        System.out.println("Qual dificuldade vc deseja jogar (Fácil[1], Médio[2], Difícil[3]): ");
-        int qualDificuldade = Main.sc.nextInt();
-
 
         if (qualJogo == 1){
             JogoCacaPalavra jogo = new JogoCacaPalavra();
-            gereciamentoDificuldade(qualDificuldade, qualJogo);
+            gereciamentoDificuldade(qualJogo);
             jogo.jogarCacaPalavra();
         } else if (qualJogo == 2) {
             JogoDaDescoberta jogo = new JogoDaDescoberta();
-            gereciamentoDificuldade(qualDificuldade, qualJogo);
+            gereciamentoDificuldade(qualJogo);
             jogo.jogandoDescobraPalavra();
         } else if (qualJogo == 3) {
             JogoTermo jogo = new JogoTermo();
@@ -53,7 +49,9 @@ public class Main {
         }
     }
 
-    public static void gereciamentoDificuldade(int dificuldade, int qualJogo){
+    public static void gereciamentoDificuldade( int qualJogo){
+        System.out.println("Qual dificuldade vc deseja jogar (Fácil[1], Médio[2], Difícil[3]): ");
+        int dificuldade = Main.sc.nextInt();
         if (qualJogo == 1){
             if (dificuldade == 2){
                 controlJogo.quatidadeDePalavras = 3;

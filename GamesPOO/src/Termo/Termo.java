@@ -67,8 +67,8 @@ public class Termo {
         for (boolean acertou : letrasAcertadas) {
             if (!acertou) return false;
         }
-        Main.controlJogo.pontos = Main.controlJogo.pontos + (Main.controlJogo.quatidadeDePalavras * (100 - ((Main.controlJogo.tentativas - 1) * 6)) - (Main.dicas.quantidadeDicas * 10));
-        System.out.println("Parabens vc acertou com " + Main.controlJogo.tentativas + " tentativas e " + Main.dicas.quantidadeDicas + " dicas usadas.");
+        Main.controlJogo.pontos = Main.controlJogo.pontosAnt + (Main.controlJogo.quatidadeDePalavras * (100 - ((Main.controlJogo.tentativas - 1) * 6)) - (Main.dicas.quantidadeDicas * 18));
+        System.out.println("Parabens vc acertou com " + Main.controlJogo.tentativas + " tentativas e " + Main.dicas.quantidadeDicas + " dicas usadas, Mais os " + Main.controlJogo.pontosAnt + " Pontos das partidas anteriores");
         System.out.println("Resultando em " + Main.controlJogo.pontos + " pontos. \n\n");
 
         return true;

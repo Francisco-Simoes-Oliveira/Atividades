@@ -62,7 +62,7 @@ public class ControlJogo{
                         System.out.println("palavra "+ (x+1) +"° certa");
 
                         if (quantidadeDeAcertos == quatidadeDePalavras) {
-                            pontos = pontosAnt + (quatidadeDePalavras * (100 - ((tentativas - 1) * 6)) - (Main.dicas.quantidadeDicas * 10));
+                            pontos = pontosAnt + (quatidadeDePalavras * (100 - ((tentativas - 1) * 6)) - (Main.dicas.quantidadeDicas * 18));
                             System.out.println("Parabens vc acertou com " + tentativas + " tentativas e " + Main.dicas.quantidadeDicas + " dicas usadas, Mais os " + pontosAnt + " Pontos das partidas anteriores");
                             System.out.println("Resultando em " + pontos + " pontos. \n\n");
 
