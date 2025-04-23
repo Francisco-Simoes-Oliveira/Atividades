@@ -6,6 +6,7 @@ public class ControlJogo{
     public Integer quantidadeDeAcertos = 0;
     public boolean acerto = false;
     public Integer pontos = 0;
+    public Integer pontosAnt = 0;
     public boolean[] palavrasAcertada;
 
     public ControlJogo(){
@@ -30,7 +31,8 @@ public class ControlJogo{
         quantidadeDeAcertos =0;
         tentativas = 1;
         acerto = false;
-        this.pontos = pontos;
+        this.pontos = 0;
+        pontosAnt = pontos;
         palavrasAcertada = new boolean[quatidadeDePalavras];
     }
 
@@ -60,9 +62,10 @@ public class ControlJogo{
                         System.out.println("palavra "+ (x+1) +"° certa");
 
                         if (quantidadeDeAcertos == quatidadeDePalavras) {
-                            pontos = pontos + (quatidadeDePalavras * (100 - ((tentativas - 1) * 6)) - (Main.dicas.quantidadeDicas * 10));
-                            System.out.println("Parabens vc acertou com " + tentativas + " tentativas e " + Main.dicas.quantidadeDicas + " dicas usadas.");
-                            System.out.println("Resultando em " + pontos + " pontos.");
+                            pontos = pontosAnt + (quatidadeDePalavras * (100 - ((tentativas - 1) * 6)) - (Main.dicas.quantidadeDicas * 10));
+                            System.out.println("Parabens vc acertou com " + tentativas + " tentativas e " + Main.dicas.quantidadeDicas + " dicas usadas, Mais os " + pontosAnt + " Pontos das partidas anteriores");
+                            System.out.println("Resultando em " + pontos + " pontos. \n\n");
+
                             acerto = true;
                         }
                     }

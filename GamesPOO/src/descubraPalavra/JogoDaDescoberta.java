@@ -6,6 +6,7 @@ import global.Main;
 
 public class JogoDaDescoberta {
     public void jogandoDescobraPalavra(){
+
         boolean sairDoJogo = false;
 
         while (!sairDoJogo) {
@@ -27,5 +28,14 @@ public class JogoDaDescoberta {
             if (resp == 0) sairDoJogo = true;
             else Main.reset();
         }
+    }
+
+    public void gerenciamentoDificuldade(int dificuldade){
+        if (dificuldade == 2){
+            Main.controlJogo.quatidadeDePalavras = 3;
+        } else if (dificuldade == 3) {
+            Main.controlJogo.quatidadeDePalavras = 5;
+        }
+        Main.reset();
     }
 }

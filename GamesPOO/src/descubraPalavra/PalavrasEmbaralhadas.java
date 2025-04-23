@@ -17,7 +17,7 @@ public class PalavrasEmbaralhadas {
                 palavraArray[y] = palavraArray[indiceAleatorio];
                 palavraArray[indiceAleatorio] = temp;
             }
-        palavraEmbaralhadas[x] = new String(palavraArray);
+            palavraEmbaralhadas[x] = new String(palavraArray);
         }
     };
 

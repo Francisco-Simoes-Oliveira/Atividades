@@ -5,12 +5,22 @@ import global.Main;
 import global.Palavras;
 
 public class JogoCacaPalavra {
+    public static Tabela tabelaLocal = new Tabela();
+    public static Palavras palavrasLocal  = new Palavras();
+
+    public JogoCacaPalavra(){
+        tabelaLocal = new Tabela();
+        palavrasLocal = new Palavras();
+    }
+
+
 
     public void jogarCacaPalavra() {
+
         boolean sairDoJogo = false;
         while (!sairDoJogo) {
-            Tabela tabelaLocal = new Tabela();
-            Palavras palavrasLocal = new Palavras();
+            tabelaLocal = new Tabela(tabelaLocal.tamanhoTabela);
+            palavrasLocal = new Palavras();
 
             tabelaLocal.precherTabela();
             palavrasLocal.escolherPalavra();
@@ -19,7 +29,6 @@ public class JogoCacaPalavra {
 
 
             while (!Main.controlJogo.acerto) {
-                Main.sc.nextLine();
                 String entrada = ControlJogo.mostrarOpcoes();
 
                 if (Main.controlJogo.verificacaoReposta(entrada) == 1) {
@@ -27,7 +36,7 @@ public class JogoCacaPalavra {
                 }
 
             }
-
+            tabelaLocal.mostrarTabela();
 
             System.out.println("\nDeseja continuar jogando Descubra a palavra (Se sim digite [1] se quer parar [0])");
             int resp = Main.sc.nextInt();
@@ -35,5 +44,16 @@ public class JogoCacaPalavra {
             else Main.reset();
 
         }
+    }
+
+    public void gerenciamentoDificuldade(int dificuldade){
+        if (dificuldade == 2){
+            Main.controlJogo.quatidadeDePalavras = 3;
+            tabelaLocal.tamanhoTabela = 15;
+        } else if (dificuldade == 3) {
+            Main.controlJogo.quatidadeDePalavras = 5;
+            tabelaLocal.tamanhoTabela = 20;
+        }
+        Main.reset();
     }
 }

@@ -15,12 +15,10 @@ public class GerenciamentoDeDicas {
     }
 
     public void revelacaoPalavra() {
-        if (indexCaracter == (Main.palavras[indexPalavrasReveladas].palavra.length() - 1)
-                && indexPalavrasReveladas<Main.controlJogo.quatidadeDePalavras && indexPalavrasReveladas != 0){
+        if (indexCaracter == (Main.palavras[indexPalavrasReveladas].palavra.length() - 1) && indexPalavrasReveladas<Main.controlJogo.quatidadeDePalavras && indexPalavrasReveladas != 0){
             indexPalavrasReveladas+= 1;
         }
-        while (indexPalavrasReveladas < Main.controlJogo.quatidadeDePalavras &&
-                Main.controlJogo.palavrasAcertada[indexPalavrasReveladas]) {
+        while (indexPalavrasReveladas < Main.controlJogo.quatidadeDePalavras && Main.controlJogo.palavrasAcertada[indexPalavrasReveladas]) {
             palavraRevelada[indexPalavrasReveladas] = Main.palavras[indexPalavrasReveladas].palavra;
             indexPalavrasReveladas++;
             indexCaracter = 0;

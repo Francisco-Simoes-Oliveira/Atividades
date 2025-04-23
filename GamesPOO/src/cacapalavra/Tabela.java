@@ -3,12 +3,16 @@ package cacapalavra;
 import global.Main;
 
 public class Tabela {
-    Integer tamanhoTabela;
-    char[][] tabela ;
+    public Integer tamanhoTabela;
+    public char[][] tabela ;
 
 
     public Tabela(){
         tamanhoTabela = 10;
+        tabela = new char[tamanhoTabela][tamanhoTabela];
+    }
+    public Tabela(int tamanhoTabela){
+        this.tamanhoTabela = tamanhoTabela;
         tabela = new char[tamanhoTabela][tamanhoTabela];
     }
 
