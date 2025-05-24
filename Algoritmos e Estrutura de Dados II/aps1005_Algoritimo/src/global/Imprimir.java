@@ -35,4 +35,43 @@ public class Imprimir {
         }
         System.out.print("\n");
     }
+
+    public static void printColocacao(long[][] tempos, int[][] melhores){
+        String[] nomes = {"BubbleSort","SelectSort","InsertionSort","MergeSort"};
+        System.out.println("Vetor Aleatorio");
+        int colocacao = 1;
+        for (int x=0; x<4; x++){
+            for (int y=0; y<4; y++) {
+                if (melhores[y][0] == colocacao) {
+                    System.out.println((x + 1) + "° " + nomes[y] + ": " + tempos[y][0] + " nanosegundos");
+                    colocacao++;
+                    break;
+                }
+            }
+        }
+
+        System.out.println("\nVetor Inverço");
+        colocacao = 1;
+        for (int x=0; x<4; x++){
+            for (int y=0; y<4; y++) {
+                if (melhores[y][1] == colocacao) {
+                    System.out.println((x + 1) + "° " + nomes[y] + ": " + tempos[y][1] + " nanosegundos");
+                    colocacao++;
+                    break;
+                }
+            }
+        }
+
+        System.out.println("\nVetor Ordenado");
+        colocacao = 1;
+        for (int x=0; x<4; x++){
+            for (int y=0; y<4; y++) {
+                if (melhores[y][2] == colocacao) {
+                    System.out.println((x + 1) + "° " + nomes[y] + ": " + tempos[y][2] + " nanosegundos");
+                    colocacao++;
+                    break;
+                }
+            }
+        }
+    }
 }

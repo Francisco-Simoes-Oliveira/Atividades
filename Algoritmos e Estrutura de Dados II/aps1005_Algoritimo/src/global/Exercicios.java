@@ -78,7 +78,7 @@ public class Exercicios {
 
         Imprimir.printNotas(vetor, media);
     }
-    private void ex07(){
+    private void ex07()/*6*/{
         int vetor[] = {250, 300, 150, 400, 350};
         /*for (int x=0; x< vetor.length;x++){
             System.out.println("Nota "+(x+1)+": ");
@@ -88,7 +88,7 @@ public class Exercicios {
         Imprimir.printPontos(vetor);
 
     }
-    private void ex08(){
+    private void ex08()/*7*/{
         Paciente[] paciente = {new Paciente("João", 3, 5),
                 new Paciente("Maria", 3, 10), new Paciente("Lucas",5,2)};
 
@@ -96,10 +96,60 @@ public class Exercicios {
         Imprimir.printPaciente(paciente);
 
     }
-    private void ex09(){
+    private void ex09()/*8*/{
+        System.out.println("Qual sera o tamanho do vetor");
+        int tamanho = sc.nextInt();
+
+        int tipoVetor = 1;
+
+        long tempos[][] = new long[4][3]; //linha tipos de ordenação; coluna tipos de vetor
+
+        for (int x=0; x<3; x++){
+            int[] vetor = new int[tamanho];
+
+            if(tipoVetor == 1)vetor = CriacaoVetor.criacaoVetorAleatorio(tamanho);
+            else if(tipoVetor == 2)vetor = CriacaoVetor.criacaoVetorInvertidos(tamanho);
+            else if (tipoVetor == 3) vetor = CriacaoVetor.criacaoVetorOrdenado(tamanho);
+
+
+            int[] aux = vetor.clone();
+            tempos[0][x] = BubbleSort.ordenacaoCrescenteTempo(aux);
+            aux = vetor.clone();
+            tempos[1][x] = SelectionSort.ordenacaoCrescenteTempo(aux);
+            aux = vetor.clone();
+            tempos[2][x] = InsertionSort.ordenacaoCrescenteTempo(aux);
+            aux = vetor.clone();
+            tempos[3][x] = MergeSort.ordenacaoTempo(aux);
+
+           tipoVetor++;
+        }
+        int melhores[][] = new int[4][3];
+
+        for (int x=0; x<3; x++){
+            for(int y=0; y<4;y++){
+                melhores[y][x] = 0;
+            }
+        }
+
+        for (int x = 0; x < 3; x++) {
+            for (int y = 0; y < 4; y++) {
+                int colocacao = 1;
+
+                for (int z = 0; z < 4; z++) {
+                    if (tempos[z][x] < tempos[y][x]) {
+                        colocacao++;
+                    }
+                }
+
+                melhores[y][x] = colocacao;
+            }
+        }
+        Imprimir.printColocacao(tempos, melhores);
 
     }
-    private void ex10(){
+    private void ex10()/*9*/{
+
+        
     }
 
 

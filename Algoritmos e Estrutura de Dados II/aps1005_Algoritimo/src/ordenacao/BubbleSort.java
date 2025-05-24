@@ -2,6 +2,9 @@ package ordenacao;
 import global.Paciente;
 
 public class BubbleSort {
+
+
+
     //Int
     public static void ordenacaoCrescente(int[] vetor)/*Ordenar Int de forma Crescente*/{
         int aux;
