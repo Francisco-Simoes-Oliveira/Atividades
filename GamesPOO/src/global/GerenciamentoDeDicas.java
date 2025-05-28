@@ -7,27 +7,39 @@ public class GerenciamentoDeDicas {
     public Integer indexPalavrasReveladas = 0;
     public Integer indexCaracter = 0;
 
+    ControlJogo controlJogo;
+    Util util = Main.util;
+
     public GerenciamentoDeDicas(){
-        palavraRevelada = new String[Main.controlJogo.quatidadeDePalavras];
-        for (int x=0; x<Main.controlJogo.quatidadeDePalavras;x++){
+        controlJogo = Main.util.controlJogo;
+        palavraRevelada = new String[controlJogo.quantidadeDePalavras];
+        for (int x = 0; x<controlJogo.quantidadeDePalavras; x++){
+            palavraRevelada[x] = "_";
+        }
+    }
+    public GerenciamentoDeDicas(Main main){
+        ControlJogo controlJogo = util.controlJogo;
+
+        palavraRevelada = new String[controlJogo.quantidadeDePalavras];
+        for (int x = 0; x<controlJogo.quantidadeDePalavras; x++){
             palavraRevelada[x] = "_";
         }
     }
 
     public void revelacaoPalavra() {
-        if (indexCaracter == (Main.palavras[indexPalavrasReveladas].palavra.length() - 1) && indexPalavrasReveladas<Main.controlJogo.quatidadeDePalavras && indexPalavrasReveladas != 0){
+        if (indexCaracter == (util.palavras[indexPalavrasReveladas].palavra.length() - 1) && indexPalavrasReveladas<controlJogo.quantidadeDePalavras && indexPalavrasReveladas != 0){
             indexPalavrasReveladas+= 1;
         }
-        while (indexPalavrasReveladas < Main.controlJogo.quatidadeDePalavras && Main.controlJogo.palavrasAcertada[indexPalavrasReveladas]) {
-            palavraRevelada[indexPalavrasReveladas] = Main.palavras[indexPalavrasReveladas].palavra;
+        while (indexPalavrasReveladas < controlJogo.quantidadeDePalavras && controlJogo.getPalavrasAcertada(indexPalavrasReveladas)) {
+            palavraRevelada[indexPalavrasReveladas] = util.palavras[indexPalavrasReveladas].palavra;
             indexPalavrasReveladas++;
             indexCaracter = 0;
         }
-        if (indexPalavrasReveladas >= Main.controlJogo.quatidadeDePalavras) {
+        if (indexPalavrasReveladas >= controlJogo.quantidadeDePalavras) {
             return;
         }
 
-        String palavraEscolhida = Main.palavras[indexPalavrasReveladas].palavra;
+        String palavraEscolhida = util.palavras[indexPalavrasReveladas].palavra;
         char[] palavraEscolhidaArray = palavraEscolhida.toCharArray();
         char[] palavraReveladaArray = new char[palavraEscolhida.length()];
         if (!palavraRevelada[indexPalavrasReveladas].equals("_")) {
@@ -55,8 +67,9 @@ public class GerenciamentoDeDicas {
 
     public void mostrarDica(){
         System.out.println("Dicas: ");
-        for (int x=0; x<Main.controlJogo.quatidadeDePalavras;x++){
+        for (int x = 0; x<controlJogo.quantidadeDePalavras; x++){
             System.out.println((x+1)+"°: "+palavraRevelada[x]);
         }
     }
+
 }

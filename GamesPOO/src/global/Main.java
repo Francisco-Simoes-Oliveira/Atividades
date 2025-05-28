@@ -1,40 +1,41 @@
 package global;
 
-
-import Termo.JogoTermo;
+import termo.JogoTermo;
 import cacapalavra.JogoCacaPalavra;
-import descubraPalavra.JogoDaDescoberta;
-import java.util.Random;
-import java.util.Scanner;
+import cacapalavra.Tabela;
+import descubraPalavras.JogoDaDescoberta;
 
 
 public class Main {
-    public static Scanner sc = new Scanner(System.in);
-    public static ControlJogo controlJogo = new ControlJogo();
-    public static Random random = new Random();
-    public static Palavras[] palavras;
-    public static GerenciamentoDeDicas dicas = new GerenciamentoDeDicas();
+
+
+    public GerenciamentoDeDicas dicas ;
+    public static Util util = new Util();
+
 
 
     public static void main(String[] args) {
-
+        Main main = new Main();
+        main.dicas = new GerenciamentoDeDicas();
+        util.setMain(main);
 
         System.out.println("Bem vindo o que deseja jogar: \n  1° Caça Palavra \n  2° Descubra Palavra \n  3° Termo \nDigite o numero correspondente:");
-        int qualJogo = sc.nextInt();
-        sc.nextLine();
+        int qualJogo = util.sc.nextInt();
+        util.sc.nextLine();
 
 
         if (qualJogo == 1){
-            JogoCacaPalavra jogo = new JogoCacaPalavra();
-            gereciamentoDificuldade(qualJogo);
+            JogoCacaPalavra jogo = new JogoCacaPalavra(util);
+            main.gereciamentoDificuldade(qualJogo, jogo);
+
             jogo.jogarCacaPalavra();
         } else if (qualJogo == 2) {
             JogoDaDescoberta jogo = new JogoDaDescoberta();
-            gereciamentoDificuldade(qualJogo);
+            main.gereciamentoDificuldade(qualJogo);
             jogo.jogandoDescobraPalavra();
         } else if (qualJogo == 3) {
             JogoTermo jogo = new JogoTermo();
-            organazarPalavra();
+            util.organazarPalavra();
             jogo.jogandoTermo();
         } else {
             System.out.println("Numero escolhido invalido");
@@ -42,42 +43,43 @@ public class Main {
 
     }
 
-    public static void organazarPalavra(){
-        palavras = new Palavras[controlJogo.quatidadeDePalavras];
-        for (int i = 0; i < palavras.length; i++) {
-            palavras[i] = new Palavras();
-        }
-    }
 
-    public static void gereciamentoDificuldade( int qualJogo){
+
+    public void gereciamentoDificuldade( int qualJogo, JogoCacaPalavra jogoC){
         System.out.println("Qual dificuldade vc deseja jogar (Fácil[1], Médio[2], Difícil[3]): ");
-        int dificuldade = Main.sc.nextInt();
+        int dificuldade = util.sc.nextInt();
         if (qualJogo == 1){
             if (dificuldade == 2){
-                controlJogo.quatidadeDePalavras = 3;
-                JogoCacaPalavra.tabelaLocal.tamanhoTabela = 15;
+                util.controlJogo.quantidadeDePalavras = 3;
+                jogoC.setTabelaLocal(new Tabela(15, util.main));
             } else if (dificuldade == 3) {
-                controlJogo.quatidadeDePalavras = 5;
-                JogoCacaPalavra.tabelaLocal.tamanhoTabela = 20;
+                util.controlJogo.quantidadeDePalavras = 5;
+                jogoC.setTabelaLocal(new Tabela(20,util.main));
             }
         }
-        else if (qualJogo == 2){
+
+        reset(util.main);
+    }
+    public void gereciamentoDificuldade( int qualJogo){
+        System.out.println("Qual dificuldade vc deseja jogar (Fácil[1], Médio[2], Difícil[3]): ");
+        int dificuldade = util.sc.nextInt();
+        if (qualJogo == 2){
             if (dificuldade == 2){
-                controlJogo.quatidadeDePalavras = 3;
+                util.controlJogo.quantidadeDePalavras = 3;
             } else if (dificuldade == 3) {
-                controlJogo.quatidadeDePalavras = 5;
+                util.controlJogo.quantidadeDePalavras = 5;
             }
         }
-        reset();
+        reset(util.main);
     }
 
 
-    public static void reset(){
-        sc.nextLine();
+    public static void reset(Main main){
+        util.sc.nextLine();
 
-        controlJogo = new ControlJogo(controlJogo.quatidadeDePalavras, controlJogo.pontos);
-        dicas = new GerenciamentoDeDicas();
-        organazarPalavra();
+        util.controlJogo = new ControlJogo(util.controlJogo.quantidadeDePalavras, util.controlJogo.pontos, main);
+        main.dicas = new GerenciamentoDeDicas();
+        util.organazarPalavra();
 
     }
 }

@@ -1,24 +1,29 @@
 package cacapalavra;
 
-import global.ControlJogo;
 import global.Main;
 import global.Palavras;
+import global.Util;
 
 public class JogoCacaPalavra {
-    public static Tabela tabelaLocal = new Tabela();
-    public static Palavras palavrasLocal  = new Palavras();
+    private Tabela tabelaLocal;
+    private Palavras palavrasLocal;
 
-    public JogoCacaPalavra(){
-        tabelaLocal = new Tabela();
+
+    Util util;
+
+    public JogoCacaPalavra(Util util){
+        this.util = util;
+        tabelaLocal = new Tabela(util.getMain());
         palavrasLocal = new Palavras();
     }
 
 
     public void jogarCacaPalavra() {
 
+
         boolean sairDoJogo = false;
         while (!sairDoJogo) {
-            tabelaLocal = new Tabela(tabelaLocal.tamanhoTabela);
+            tabelaLocal = new Tabela(tabelaLocal.getTamanhoTabela(), util.main);
             palavrasLocal = new Palavras();
 
             tabelaLocal.precherTabela();
@@ -27,10 +32,10 @@ public class JogoCacaPalavra {
             tabelaLocal.mostrarTabela();
 
 
-            while (!Main.controlJogo.acerto) {
-                String entrada = ControlJogo.mostrarOpcoes();
+            while (!util.controlJogo.getAcerto()) {
+                String entrada = util.controlJogo.mostrarOpcoes();
 
-                if (Main.controlJogo.verificacaoReposta(entrada) == 1) {
+                if (util.controlJogo.verificacaoReposta(entrada) == 1) {
                     break;
                 }
 
@@ -38,21 +43,14 @@ public class JogoCacaPalavra {
             tabelaLocal.mostrarTabela();
 
             System.out.println("\nDeseja continuar jogando Descubra a palavra (Se sim digite [1] se quer parar [0])");
-            int resp = Main.sc.nextInt();
+            int resp = util.sc.nextInt();
             if (resp == 0) sairDoJogo = true;
-            else Main.reset();
+            else Main.reset(util.main);
 
         }
     }
 
-    public void gerenciamentoDificuldade(int dificuldade){
-        if (dificuldade == 2){
-            Main.controlJogo.quatidadeDePalavras = 3;
-            tabelaLocal.tamanhoTabela = 15;
-        } else if (dificuldade == 3) {
-            Main.controlJogo.quatidadeDePalavras = 5;
-            tabelaLocal.tamanhoTabela = 20;
-        }
-        Main.reset();
+    public void setTabelaLocal(Tabela tabelaLocal) {
+        this.tabelaLocal = tabelaLocal;
     }
 }
