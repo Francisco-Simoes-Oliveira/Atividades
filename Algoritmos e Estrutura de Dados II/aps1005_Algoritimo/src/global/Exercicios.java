@@ -148,8 +148,66 @@ public class Exercicios {
 
     }
     private void ex10()/*9*/{
+        System.out.println("Qual sera o tamanho do vetor");
+        int tamanho = sc.nextInt();
 
-        
+        int tipoVetor = 1;
+
+        long tempos[][] = new long[4][3]; //linha tipos de ordenação; coluna tipos de vetor
+        int operacoes[][] = new int[4][3];
+
+        for (int x=0; x<3; x++){
+            int[] vetor = new int[tamanho];
+
+            if(tipoVetor == 1)vetor = CriacaoVetor.criacaoVetorAleatorio(tamanho);
+            else if(tipoVetor == 2)vetor = CriacaoVetor.criacaoVetorInvertidos(tamanho);
+            else if (tipoVetor == 3) vetor = CriacaoVetor.criacaoVetorOrdenado(tamanho);
+
+
+            int[] aux = vetor.clone();
+            tempos[0][x] = BubbleSort.ordenacaoCrescenteTempo(aux);
+            aux = vetor.clone();
+            tempos[1][x] = SelectionSort.ordenacaoCrescenteTempo(aux);
+            aux = vetor.clone();
+            tempos[2][x] = InsertionSort.ordenacaoCrescenteTempo(aux);
+            aux = vetor.clone();
+            tempos[3][x] = MergeSort.ordenacaoTempo(aux);
+
+            aux = vetor.clone();
+            operacoes[0][x] = BubbleSort.ordenacaoCrescenteQuantia(aux);
+            aux = vetor.clone();
+            operacoes[1][x] = SelectionSort.ordenacaoCrescenteQuantia(aux);
+            aux = vetor.clone();
+            operacoes[2][x] = InsertionSort.ordenacaoCrescenteQuantia(aux);
+            aux = vetor.clone();
+            operacoes[3][x] = MergeSort.ordenacaoQuantia(aux);
+
+
+            tipoVetor++;
+        }
+        int melhores[][] = new int[4][3];
+
+        for (int x=0; x<3; x++){
+            for(int y=0; y<4;y++){
+                melhores[y][x] = 0;
+            }
+        }
+
+        for (int x = 0; x < 3; x++) {
+            for (int y = 0; y < 4; y++) {
+                int colocacao = 1;
+
+                for (int z = 0; z < 4; z++) {
+                    if (tempos[z][x] < tempos[y][x]) {
+                        colocacao++;
+                    }
+                }
+
+                melhores[y][x] = colocacao;
+            }
+        }
+
+        Imprimir.printAnalise(tempos,melhores,operacoes);
     }
 
 

@@ -3,8 +3,6 @@ import global.Paciente;
 
 public class BubbleSort {
 
-
-
     //Int
     public static void ordenacaoCrescente(int[] vetor)/*Ordenar Int de forma Crescente*/{
         int aux;
@@ -134,6 +132,26 @@ public class BubbleSort {
         }
         long fim = System.nanoTime();
         return fim - inicio;
+    }
+    public static int ordenacaoCrescenteQuantia(int[] vetor)/*Medir tempo e comtar operação*/{
+        int quandidade = 0;
+        int aux;
+        boolean troca;
+        for (int x=0;x<vetor.length;x++){
+            troca = false;
+            for (int y=0;y<vetor.length -(x+1);y++){
+                if (vetor[y] > vetor[y+1]){
+                    aux = vetor[y];
+                    vetor[y] = vetor[y+1];
+                    vetor[y+1] = aux;
+                    quandidade++;
+                    troca = true;
+                }
+            }
+            if (!troca) break;
+        }
+
+        return quandidade;
     }
 
 }

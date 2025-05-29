@@ -1,6 +1,10 @@
 package ordenacao;
 
+import global.Imprimir;
+
 public class MergeSort {
+
+    public static int quandidade = 0;
 
     public static void ordenacao(int vetor[]){
         int aux[] = new int[vetor.length];
@@ -142,6 +146,53 @@ public class MergeSort {
         ordenacaoMarge(vetor, aux, 0, vetor.length - 1,1);
         long fim = System.nanoTime();
         return fim - inicio;
+    }
+
+    public static int ordenacaoQuantia(int vetor[]){
+        quandidade = 0;
+        int aux[] = new int[vetor.length];
+        ordenacaoMarge(vetor, aux, 0, vetor.length - 1,1, 0);
+        Imprimir.printVetor(vetor);
+        return quandidade;
+    }
+
+    private static void ordenacaoMarge(int vetor[],int aux[], int inicio, int fim,int tipo, int n){
+        int meio = (inicio + fim)/2;
+
+        if (inicio<fim){
+            ordenacaoMarge(vetor,aux,inicio,meio,tipo);
+            ordenacaoMarge(vetor,aux,meio+1,fim,tipo);
+            if (tipo == 1)intercalacaoCrecente(vetor, aux, inicio, meio, fim, n);
+            //else if (tipo == -1)intercalacaoDecrecente(vetor, aux, inicio, meio, fim, quandidade);
+        }
+    }
+
+    public static void intercalacaoCrecente(int vetor[], int aux[], int inicio, int meio, int fim, int n){
+
+        for (int x=0; x<= fim;x++){
+            aux[x] =vetor[x];
+        }
+
+        int esquerda = inicio;
+        int direita = meio+1;
+
+        for (int x=inicio; x <= fim;x++){
+            if(esquerda>meio) {
+                vetor[x] = aux[direita++];
+                quandidade++;
+            }else if(direita>fim) {
+                vetor[x] = aux[esquerda++];
+                quandidade++; // Onde voce colocou para contar o merge
+            }else if(aux[esquerda] < aux[direita]) {
+                vetor[x] = aux[esquerda++];
+                quandidade++;
+            }else if(aux[esquerda] > aux[direita]){
+                vetor[x] = aux[direita++];
+                quandidade++;
+            }
+
+        }
+
     }
 
 }

@@ -69,6 +69,25 @@ public class InsertionSort {
         return fim-inicio;
     }
 
+    public static int ordenacaoCrescenteQuantia(int[] vetor)/*Medir tempo e comtar operação*/{
+        int quandidade = 0;
+        int chave ;
+        int y;
+
+        for (int x=1;x<vetor.length;x++){
+            chave = vetor[x];
+            y = x-1;
+            while (y>=0 && vetor[y]>chave){
+                vetor[y+1]= vetor[y];
+                y--;
+            }
+            vetor[y+1] = chave;
+            quandidade++;
+        }
+
+        return quandidade;
+    }
+
 }
 
 
