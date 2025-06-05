@@ -10,7 +10,13 @@ public class MergeSort {
         int aux[] = new int[vetor.length];
         ordenacaoMarge(vetor, aux, 0, vetor.length - 1,1);
     }
-    public static void ordenacao(int tipo ,int vetor[]){
+
+    public static void ordenacao(int vetor[], int n){
+        int aux[] = new int[vetor.length];
+        ordenacaoMarge(vetor, aux, 0, n- 1,1);
+    }
+
+    public static void ordenacao(int tipo,int vetor[]){
         int aux[] = new int[vetor.length];
         ordenacaoMarge(vetor, aux, 0, vetor.length - 1,tipo);
     }
@@ -140,6 +146,12 @@ public class MergeSort {
 
     //Especiais
 
+    public static void ordenarMatriz(int[][] matriz)/*Matriz*/{
+        for(int x=0; x< matriz.length;x++){
+            ordenacao(matriz[x]);
+        }
+    }
+
     public static long ordenacaoTempo(int vetor[]){
         long inicio = System.nanoTime();
         int aux[] = new int[vetor.length];
@@ -152,7 +164,6 @@ public class MergeSort {
         quandidade = 0;
         int aux[] = new int[vetor.length];
         ordenacaoMarge(vetor, aux, 0, vetor.length - 1,1, 0);
-        Imprimir.printVetor(vetor);
         return quandidade;
     }
 
@@ -182,7 +193,7 @@ public class MergeSort {
                 quandidade++;
             }else if(direita>fim) {
                 vetor[x] = aux[esquerda++];
-                quandidade++; // Onde voce colocou para contar o merge
+                quandidade++;
             }else if(aux[esquerda] < aux[direita]) {
                 vetor[x] = aux[esquerda++];
                 quandidade++;

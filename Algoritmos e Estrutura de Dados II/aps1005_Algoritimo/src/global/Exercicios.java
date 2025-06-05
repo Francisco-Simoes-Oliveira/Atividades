@@ -55,11 +55,18 @@ public class Exercicios {
         int n = sc.nextInt();
 
         BubbleSort.ordenacaoCrescente(vetor, n);
+        //SelectionSort.ordenacaoCrescente(vetor, n);
+        //InsertionSort.ordenacaoCrescente(vetor, n);
+        //MergeSort.ordenacao(vetor, n)
+
         Imprimir.printVetor(vetor);
     }
     private void ex05(){
         int matriz[][] = {{3, 2, 1}, {6, 5, 4}, {9, 8, 7}};
         BubbleSort.ordenarMatriz(matriz);
+        //SelectionSort.ordenarMatriz(matriz);
+        //InsertionSort.ordenarMatriz(matriz);
+        //MergeSort.ordenarMatriz(matriz);
 
         for (int x=0; x< matriz.length;x++){
             Imprimir.printVetor(matriz[x]);
@@ -70,6 +77,9 @@ public class Exercicios {
         int vetor[] = {85, 70, 95, 60, 75, 80};
         double media = 0;
         BubbleSort.ordenacaoCrescente(vetor);
+        //SelectionSort.ordenacaoCrescente(vetor);
+        //InsertionSort.ordenacaoCrescente(vetor);
+        //MergeSort.ordenacao(vetor);
 
         for (int x=0; x< vetor.length;x++){
             media += vetor[x];
@@ -85,6 +95,10 @@ public class Exercicios {
             vetor[x] = sc.nextInt();
         }*/
         BubbleSort.ordenacaoDecrescente(vetor);
+        //SelectionSort.ordenacaoDecrescente(vetor);
+        //InsertionSort.ordenacaoDecrescente(vetor);
+        //MergeSort.ordenacao(-1, vetor);
+
         Imprimir.printPontos(vetor);
 
     }
@@ -93,6 +107,8 @@ public class Exercicios {
                 new Paciente("Maria", 3, 10), new Paciente("Lucas",5,2)};
 
         BubbleSort.ordenarPaciente(paciente);
+        //SelectionSort.ordenarPaciente(paciente);
+
         Imprimir.printPaciente(paciente);
 
     }
@@ -110,6 +126,7 @@ public class Exercicios {
             if(tipoVetor == 1)vetor = CriacaoVetor.criacaoVetorAleatorio(tamanho);
             else if(tipoVetor == 2)vetor = CriacaoVetor.criacaoVetorInvertidos(tamanho);
             else if (tipoVetor == 3) vetor = CriacaoVetor.criacaoVetorOrdenado(tamanho);
+
 
 
             int[] aux = vetor.clone();
