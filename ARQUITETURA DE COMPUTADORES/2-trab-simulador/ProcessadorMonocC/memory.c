@@ -44,12 +44,6 @@ void memory_write_word(Memory* mem, size_t address, uint32_t value) {
     }
     mem->data[address] = value;
    
-    // if (address + 4 > mem->size) {
-    //     memory_expand(mem, address + 4);
-    // }
-    // for (int i = 0; i < 4; i++) {
-    //     mem->data[address + i] = (value >> (i * 8)) & 0xFF;
-    // }
 }
 
 uint16_t memory_read_word(Memory *mem, uint32_t address) {
@@ -59,13 +53,3 @@ uint16_t memory_read_word(Memory *mem, uint32_t address) {
     }
     return mem->data[address];
 }
-
-// Lê 4 bytes como word
-// uint32_t memory_read_word(Memory* mem, size_t address) {
-//     if (address + 4 > mem->size) return 0;
-//     uint32_t result = 0;
-//     for (int i = 0; i < 4; i++) {
-//         result |= mem->data[address + i] << (i * 8);
-//     }
-//     return result;
-// }

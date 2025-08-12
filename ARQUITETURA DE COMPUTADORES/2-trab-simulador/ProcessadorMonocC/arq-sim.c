@@ -24,17 +24,8 @@ int main (int argc, char **argv)
 	bsize = ftell(fp);
 	fclose(fp);
 
-	//uint32_t mem_words = bsize / 2;
-
 	Memory *mem = memory_create(bsize);
 
-
-	
-	// uint16_t *memory = malloc(mem_words * sizeof(uint16_t));
-	// if (!memory) {
-	//     perror("malloc");
-	//     exit(1);
-	// }
 	registrador reg;
 	reg.pc = 1;
 

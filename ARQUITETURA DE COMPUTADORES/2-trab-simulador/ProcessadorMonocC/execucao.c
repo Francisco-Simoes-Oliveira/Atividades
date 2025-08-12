@@ -14,12 +14,11 @@ void execucao_loop(Memory *mem, uint32_t size, registrador *reg){
     uint8_t inst_r[5];
     uint16_t inst_i[4];
 
-    int max_cycles = 10000;  // limite para evitar loop infinito
+    int max_cycles = 1000;  // limite para evitar loop infinito
     int cycles = 0;
      
     while (reg->pc < size){
         pc_anterior = reg->pc;
-        //uint16_t instruction = (mem->data[reg->pc + 1] << 8) | mem->data[reg->pc];
         uint16_t instruction = memory_read_word(mem, reg->pc);
 
         //printf("PC antes: %u, instrucao: 0x%04X\n", reg->pc, instruction);
