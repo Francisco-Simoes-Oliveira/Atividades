@@ -5,7 +5,6 @@
 #include "MemoryLevel.h"
 
 class MainMemory: public MemoryLevel
-{
-    
+{   
 
-}
+};

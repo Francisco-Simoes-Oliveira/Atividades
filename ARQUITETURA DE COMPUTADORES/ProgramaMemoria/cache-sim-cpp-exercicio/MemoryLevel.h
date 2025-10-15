@@ -1,19 +1,21 @@
-#ifdef MEMORY_LEVEL_H
-#define MEMORY_LEVEL_H
-
-
-#include <cstdint>
+#pragma once
 #include <string>
+#include <cstdint>
 
 class MemoryLevel
 {
 private:
     std::string nome;
     uint64_t latency;
+
 public:
+    // Construtor da classe
     MemoryLevel(std::string nome, uint64_t latency);
-    ~MemoryLevel();
+
+    // Destrutor da classe
+    virtual ~MemoryLevel();
+
+    // Métodos de acesso
     std::string getNome();
-    uint64_t getLatency();      
+    uint64_t getLatency();
 };
-#endif

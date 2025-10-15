@@ -4,24 +4,29 @@
 #include <my-lib/bit.h>
 #include "MemoryLevel.h"
 
-class abstract MemoryLevel
-{
+#include <string>
+#include <cstdint>
+
+class MemoryLevel {
 private:
     std::string nome;
-    uint64 latency;
+    uint64_t latency;
 
 public:
-    //Constructor
-    MemoryLevel(std::string nome, uint64_t latency){
+    // Construtor
+    MemoryLevel(std::string nome, uint64_t latency) {
         this->nome = nome;
         this->latency = latency;
-    };
-    ~MemoryLevel(){};
+    }
 
-    std::string getNome(){
+    // Destrutor
+    virtual ~MemoryLevel() {}
+
+    std::string getNome() {
         return this->nome;
-    };
-    uint64_t getLatency(){
+    }
+
+    uint64_t getLatency() {
         return this->latency;
-    };
+    }
 };
