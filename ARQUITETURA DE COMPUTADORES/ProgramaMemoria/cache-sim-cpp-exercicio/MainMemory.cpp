@@ -6,5 +6,5 @@
 
 class MainMemory: public MemoryLevel
 {   
-
+    
 };
